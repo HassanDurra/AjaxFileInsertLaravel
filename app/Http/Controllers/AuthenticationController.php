@@ -52,4 +52,7 @@ class AuthenticationController extends Controller
             echo "Available";
         }
     }
+    public function checkUrl(Request $urlData){
+
+    }
 }
