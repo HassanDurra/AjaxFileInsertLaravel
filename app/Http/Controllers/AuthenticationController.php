@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Notifications;
 use Hash ;
 class AuthenticationController extends Controller
 {
     public $parentModel   = User::class ;
     public $parentView    = 'register';
-
+    public $notification  = Notifications::class;
     public function index(){
         return view($this->parentView);
     }
@@ -20,6 +21,7 @@ class AuthenticationController extends Controller
         $email              = $request->email;
         $password           = $request->password;
         $hashedPassword     = Hash::make($password);
+
         if($request->hasFile("userImage")){
             $fileName  = $userName . "." . $request->file("userImage")->getClientOriginalExtension();
             $request->file("userImage")->move("Profiles" , $fileName);
@@ -30,7 +32,13 @@ class AuthenticationController extends Controller
                 'password'     => $hashedPassword ,
                 'email'        => $email
             ]);
+
+
             if($saveUser == true){
+                $saveNotification = $this->notification::create([
+                    'subject' => "New User Registered",
+                    'message' => "$userName Has registered as a user in our portal at $saveUser->created_at"
+                ]);
                 echo "Success";
             }
             else{
@@ -52,7 +60,12 @@ class AuthenticationController extends Controller
             echo "Available";
         }
     }
-    public function checkUrl(Request $urlData){
-
+    public function allUsers(){
+        $data['allusers'] = $this->parentModel::all();
+        return view("allusers")->with('data',$data);
+    }
+    public function notifications(){
+        $notifications = $this->notification::all();
+        return response()->json($notifications);
     }
 }

@@ -17,3 +17,5 @@ use App\Http\Controllers\AuthenticationController as AuthController;
 Route::get("/" , [AuthController::class , 'index'])->name("user.register");
 Route::Post("/registered" , [AuthController::class , 'store'])->name("user.store");
 Route::Post("/check_email" , [AuthController::class , 'check_email'])->name("user.check.email");
+Route::get("allUsers" , [AuthController::class , 'allUsers'])->name("all.users");
+Route::get("notifications" , [AuthController::class , 'notifications'])->name("all.notifications");

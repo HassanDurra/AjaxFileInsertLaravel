@@ -1,5 +1,5 @@
 body{
-    background:rgb(31, 110, 31) ;
+    background:rgb(31, 110, 31) !important;
 }
 .userRegisterContainer{
     max-width: 300px;
@@ -12,4 +12,32 @@ body{
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 0 10px rgb(43, 42, 42);
+}
+.table-container{
+    width: 100%;
+    border: 1px solid rgb(221, 221, 221);
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgb(43, 42, 42);
+}
+.table-container .table th{
+    text-align: center;
+    color: rgb(59, 59, 59);
+}
+.table-container .table td{
+    text-align: center;
+    color: rgb(59, 59, 59);
+}
+.notification-button
+{
+    display: flex;
+    justify-content: end;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+.notificationBar{
+    border: 1px solid rgb(211, 209, 209)!important;
+  padding: 10px;
+  border-radius: 5px;
 }
