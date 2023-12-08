@@ -88,6 +88,7 @@
           </div>
 
             <button class="btn mt-3 btn-success" type="submit">Submit</button>
+            <p>Already Have an Account? <a href="{{route('Auth.login')}}">Sign in Here</a></p>
             </form>
     </div>
 </body>
